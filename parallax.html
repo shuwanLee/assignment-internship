@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parallax scrolling</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/parallax.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container-fluid" id="top-container">
+        <div class="container-fluid" id="top-line"></div>
+        <div id="top-menu-bar">
+            <div class="col-xs-1">
+                1
+            </div>
+            <div class="col-xs-10">
+                2
+            </div>
+            <div class="col-xs-1">
+                3
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-pic-container">
+        <img src="img/photo.jpg" id="profile-pic">
+    </div>
+
+    <div class="container-fluid" id="content-container">
+        <div class="container-fluid" id="main-menu-bar">
+            <div class="col-xs-4 left">
+                4
+            </div>
+            <div class="col-xs-4">
+                5
+            </div>
+            <div class="col-xs-4">
+                6
+            </div>
+        </div>
+        <div id="content">
+            <br /><br />
+            <h1>Default</h1>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script type="text/javascript">
+    $(window).scroll(function () {
+        $('#profile-pic-container').css({
+            'top': 20-($(this).scrollTop() / 2) + "px"
+        });
+        if($(this).scrollTop()<=420){
+            $("#main-menu-bar").css("opacity",0.8);
+            $("#top-menu-bar").css("opacity",1);
+            $("#top-menu-bar").css("background-color",'transparent');
+        }
+        else{
+            $("#main-menu-bar").sticky({topSpacing:60});
+            $("#main-menu-bar").css("opacity",1);
+            $("#top-menu-bar").css("opacity",0.8);
+            $("#top-menu-bar").css("background-color",'#555');
+        }
+    });
+</script>
+</html>
